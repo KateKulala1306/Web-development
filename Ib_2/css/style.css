@@ -1,0 +1,157 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+ul,
+ol,
+button,
+p,
+h2,
+blockquote {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img,
+a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.header {
+    padding: 17px 20px;
+    height: 500px;
+    background-image: url(../images/header_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 940px;
+    margin: 0 auto;
+}
+
+.header_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    padding-top: 21px;
+    text-decoration: none;
+    font: 400 26px/26px 'Lora', sans-serif;
+    color: #FFFFFF
+}
+
+.nav_list {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav_link {
+    display: block;
+    padding: 10px 21px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font: 400 12px/20px 'Oxygen', sans-serif;
+    color: #FFFFFF
+}
+
+.header__title-block {
+    padding: 110px 0 157px 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.title {
+    margin-bottom: 20px;
+    font: 400 50px/51px 'Lora', sans-serif;
+    color: #FFFFFF;
+}
+
+.subtitle {
+    font: 400 17px/20px 'Oxygen', sans-serif;
+    color: rgba(255, 255, 255, 0.63);
+}
+
+.button {
+    margin-top: 31px;
+    width: 167px;
+    height: 44px;
+    border: none;
+    border-radius: 3px;
+    background-color: #dd783f;
+    color: white;
+    font: 400 13px/20px "Oxy", sans-serif;
+}
+
+.navigation {
+    width: 960px;
+    padding: 9px 0 10px;
+    height: 65px;
+    margin: 0 auto;
+}
+
+.navigation_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.navigation_item {
+    height: 46px;
+    width: 139px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation_link {
+    padding: 13px 25px 13px 24px;
+    color: #768088;
+    font: 400 20px/14px "Lora", sans-serif;
+}
+
+.main_container {
+    background: #F7F7F7;
+    padding-bottom: 135px;
+}
+
+.main-content__text {
+    padding-top: 40px;
+    font: 400 24px/35px 'Oxygen', sans-serif;
+    color: #101315;
+}
+
+.footer {
+    padding: 17px 20px;
+    background-image: url("../images/backgraund_footer.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.footer_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_logo {
+    color: #FFFFFF;
+}
+
+.footer_nav {
+    color: rgba(255, 255, 255, 0.6);
+}
