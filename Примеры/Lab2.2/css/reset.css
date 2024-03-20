@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul, ol, button, p, h2, blockquote {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* сразу везде уберем маркеры */
+}
+
+img, a {
+  display: block; /* ссылкии картинки делаем блочными */
+  text-decoration: none; /* убираем подчеркивание ссылок */
+  color: inherit; /* и чтобы цвет был сразу нормальный */
+}

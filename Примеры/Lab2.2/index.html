@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Escape</title>
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <!-- все сбросы падингов засунем в отдельный файл сброса -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="page-body">
+  <div class="container">
+    <!-- не использовал, сделал на всякий случай -->
+    <header class="page-header">
+      <!-- хедером будет секция, где на фоне скалы, ширину не ограничиваем,
+        она будет тянуться во всю ширину экрана, а там же в ней будет фон скал, это будет блок БЭМ -->
+      <div class="page-header__wrapper">
+        <!-- обертка будет для того чтобы содержимое не превышало ширину по макету 940, а также будет центрировать -->
+        <nav class="page-header__navigation">
+          <!-- панель с кнопками будет ограничена page-header__wrapper,
+              а также будет флекс-контейнером для логотипа и списка кнопок -->
+          <a class="page-header__home-button" href="">Escape</a>
+          <!-- блочный тип мы уже задали в reset -->
+          <ul class="page-header__navigation-bar">
+            <!-- в свою очередь флекс-контейнер для кнопок  -->
+            <li><a class="page-header__link" href="">Home</a></li>
+            <!-- элементам li никакие широты и высоты задавать не будем, это будет делать сама ссылка -->
+            <li><a class="page-header__link" href="">Categories</a></li>
+            <li><a class="page-header__link" href="">About</a></li>
+            <li><a class="page-header__link" href="">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="page-header__body">
+          <!-- содержимое со слоганом и текстом и кнопкой, назвал просто тело (body) -->
+          <div class="page-header__body-wrapper">
+            <!-- сделаем еще обретку для текста с кнопкой, чтобы было удобнее спозиционировать
+              в центре по вертикали, также сделаем ее флекс контейнром, из макета возьмем высоту -->
+            <h1 class="page-header__slogan">Let's do it together.</h1>
+            <!-- слоган -->
+            <p class="page-header__text">
+              <!-- текст -->
+              We travel the world in search of stories. Come along for the
+              ride.
+            </p>
+            <button class="page-header__button button">
+              <!-- так как у нас на сайте есть две похожие кнопки по стилю, а именно это
+                цвет текса, фона и закругленная рамка, то мы дадим эти общие свойства для двух кнопок классу button.
+                В классе page-header__button, мы дадим уже индивидуальные свойства, которые относятся именно к блоку page-header,
+                внутри которого эта кнопка находится, в нашем случае это ширина высота и шрифт, для второй кнопки, которая с текстом
+                Adventure, мы применим наш общий класс button и примиксуем к нему уже класс card__button (103 строчка),
+                со своими размерами и шрифтом и абсолютным позиционированием -->
+              View Latest Posts
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="page-main">
+      <!-- тут будут блоки те что с белым фоном, вторая нафигация и карточки -->
+      <nav class="page-main__nav nav">
+        <!-- аналогично как с кнопкой button, класс page-main__nav как элемент блока page-main,
+          который будет задавать позиционирование блоку nav, класс nav как самостоятельный блок, который будет задавать только
+          внешние вид и который можно будет поставить в другое место. Это называется микс -->
+        <ul class="nav__list">
+          <!-- nav__list в данном случае только как элемент блока nav, его нельзя переносить за пределы блока -->
+          <li class="nav__item">
+            <a class="nav__link" href="">Nature</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="">Photography</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="">Relaxation</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="">Vacation</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="">Travel</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="">Adventure</a>
+          </li>
+        </ul>
+      </nav>
+      <section class="page-main__posts posts">
+        <!-- секция с карточками-->
+        <div class="posts__featured">
+          <!-- актуальные карточки -->
+          <div class="posts__title-of-section title-of-section">
+            <!-- названием для актуальных карточек -->
+            <p>Featured Posts</p>
+          </div>
+          <div class="posts__cards">
+            <!-- блок с актуальными карточками -->
+            <div class="posts__card card card--the_road_ahead">
+              <!-- одна карточка, в ней три эелмента -->
+              <h2 class="card__title">The Road Ahead</h2> <!-- название карточки -->
+              <p class="card__text">
+                <!-- описание карточки -->
+                The road ahead might be paved - it might not be.
+              </p>
+              <blockquote class="card__blockquote blockquote">
+                <!-- секция с информацией об авторе и дате публикации -->
+                <div class="blockquote__avatar avatar">
+                  <!-- аватар -->
+                  <img src="images/ava_1.jpg" alt="" />
+                </div>
+                <cite class="blockquote__author">Mat Vogels</cite> <!-- автор -->
+                <time class="blockquote__data" datetime="2021-10-12">September 25, 2015</time> <!-- дата публикации -->
+              </blockquote>
+            </div>
+            <div class="posts__card card card--from_top_down">
+              <button class="card__button button">Adventure</button>
+              <!-- кнопку спозиционируем абсолютно, применим
+                  класс button что и к первой кнопке, который содержим общие стиили (цвет, рамка и тд) а в классе card__button уже
+                  переопределим те свойства, которые нужны именно для этой кнопки (положение, высота, ширина),
+                  главное чтобы этот класс стоял ниже чем button-->
+              <h2 class="card__title">From Top Down</h2>
+              <p class="card__text">
+                Once a year, go someplace you’ve never been before.
+              </p>
+              <blockquote class="card__blockquote blockquote">
+                <div class="blockquote__avatar avatar">
+                  <img src="images/ava_2.jpg" alt="" />
+                </div>
+                <cite class="blockquote__author">William Wong</cite>
+                <time class="blockquote__data" datetime="2021-10-12">September 25, 2015</time>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="posts__recent">
+          <!-- ранние карточки -->
+          <div class="posts__title-of-section_2 title-of-section">
+            <!-- название для ранних карточек -->
+            <p>Most Recent</p>
+          </div>
+          <div class="posts__recent-cards">
+            <!-- блок с ранними карточками -->
+            <div class="posts__recent-card recent-card">
+              <img src="images/card-recent-1.jpg" alt="" width="296" height="150" />
+              <div class="recent-card__slogan">
+                <h2 class="recent-card__title">Still Standing Tall</h2>
+                <p class="recent-card__text">
+                  Life begins at the end of your comfort zone.
+                </p>
+              </div>
+              <blockquote class="recent-card__blockquote">
+                <div class="recent-card__avatar avatar">
+                  <img src="images/ava_2.jpg" alt="" />
+                </div>
+                <cite class="recent-card__author">William Wong</cite>
+                <time class="recent-card__data" datetime="2015-25-9">9/25/2015</time>
+              </blockquote>
+            </div>
+            <div class="posts__recent-card recent-card">
+              <img src="images/card-recent-2.jpg" alt="" width="296" height="150" />
+              <div class="recent-card__slogan">
+                <h2 class="recent-card__title">Sunny Side Up</h2>
+                <p class="recent-card__text">
+                  No place is ever as bad as they tell you it’s going to be.
+                </p>
+              </div>
+              <blockquote class="recent-card__blockquote">
+                <div class="recent-card__avatar avatar">
+                  <img src="images/ava_1.jpg" alt="" />
+                </div>
+                <cite class="recent-card__author">Mat Vogels</cite>
+                <time class="recent-card__data" datetime="2015-25-9">9/25/2015</time>
+              </blockquote>
+            </div>
+            <div class="posts__recent-card recent-card">
+              <img src="images/card-recent-3.jpg" alt="" width="296" height="150" />
+              <div class="recent-card__slogan">
+                <h2 class="recent-card__title">Water Falls</h2>
+                <p class="recent-card__text">
+                  We travel not to escape life, but for life not to escape us.
+                </p>
+              </div>
+              <blockquote class="recent-card__blockquote">
+                <div class="recent-card__avatar avatar">
+                  <img src="images/ava_1.jpg" alt="" />
+                </div>
+                <cite class="recent-card__author">Mat Vogels</cite>
+                <time class="recent-card__data" datetime="2015-25-9">9/25/2015</time>
+              </blockquote>
+            </div>
+            <div class="posts__recent-card recent-card">
+              <img src="images/card-recent-4.jpg" alt="" width="296" height="150" />
+              <div class="recent-card__slogan">
+                <h2 class="recent-card__title">Through the Mist</h2>
+                <p class="recent-card__text">
+                  Travel makes you see what a tiny place you occupy in the
+                  world.
+                </p>
+              </div>
+              <blockquote class="recent-card__blockquote">
+                <div class="recent-card__avatar avatar">
+                  <img src="images/ava_2.jpg" alt="" />
+                </div>
+                <cite class="recent-card__author">William Wong</cite>
+                <time class="recent-card__data" datetime="2015-25-9">9/25/2015</time>
+              </blockquote>
+            </div>
+            <div class="posts__recent-card recent-card">
+              <img src="images/card-recent-5.jpg" alt="" width="296" height="150" />
+              <div class="recent-card__slogan">
+                <h2 class="recent-card__title">Awaken Early</h2>
+                <p class="recent-card__text">
+                  Not all those who wander are lost.
+                </p>
+              </div>
+              <blockquote class="recent-card__blockquote">
+                <div class="recent-card__avatar avatar">
+                  <img src="images/ava_1.jpg" alt="" />
+                </div>
+                <cite class="recent-card__author">Mat Vogels</cite>
+                <time class="recent-card__data" datetime="2015-25-9">9/25/2015</time>
+              </blockquote>
+            </div>
+            <div class="posts__recent-card recent-card">
+              <img src="images/card-recent-6.jpg" alt="" width="296" height="150" />
+              <div class="recent-card__slogan">
+                <h2 class="recent-card__title">Try it Always</h2>
+                <p class="recent-card__text">
+                  The world is a book, and those who do not travel read only one page.</p>
+              </div>
+              <blockquote class="recent-card__blockquote">
+                <div class="recent-card__avatar avatar">
+                  <img src="images/ava_1.jpg" alt="" />
+                </div>
+                <cite class="recent-card__author">Mat Vogels</cite>
+                <time class="recent-card__data" datetime="2015-25-9">9/25/2015</time>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="container footer_content">
+          <a class="logo footer_logo" href="#">Escape.</a>
+          <nav class="nav">
+            <ul class="nav_list">
+              <li class="nav_item"> <a class="nav_link footer_nav" href="#">Home</a></li>
+              <li class="nav_item"> <a class="nav_link footer_nav" href="#">Categories</a></li>
+              <li class="nav_item"> <a class="nav_link footer_nav" href="#">About</a></li>
+              <li class="nav_item"> <a class="nav_link footer_nav" href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+
+</html>

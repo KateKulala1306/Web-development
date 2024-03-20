@@ -1,0 +1,424 @@
+@font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Lora-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Lora-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Oxy";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Oxygen-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Oxy";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Oxygen-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* шрифты я просто локально подключил, спиздил с сайта какого-то, у тебя онлайн подключены, тоже хорошо */
+
+html {
+  height: 100%; /* чтобы пустой документ был в высоту экрана, не обязательно, для удобства */
+}
+body {
+  min-height: 100%;
+  margin: 0 auto; /* в данном случае смысла нет, так как у нас
+  body будет по ширине экрана, имеет смысл делать там где body задают ширину и цвет сайта белый например */
+  color: white; /* цвет текста на сайте белый преимущественно, тоже удобства, где надо будет определим сами */
+}
+.page-header {
+  height: 500px;
+  background-image: url(../images/header_background.jpg); /* декоративное изображение фона */
+  background-size: cover; /* чтобы фон растягивался вместе с окном когда открываешь на разных мониторах */
+  background-repeat: no-repeat;
+  background-position: center; /* чтобы видимая часть не двигалась а оставалась
+  в центре относительно навигации при просмотре с разных мониторов, по сути как центрирование */
+}
+.page-header__wrapper {
+  display: flex; /* сделаем обретку флекс-контейнером для двух элементов: 1)логотип с кнопками 2) блока с текстом*/
+  flex-direction: column; /* зададим направление сверху вниз */
+  width: 940px; /* берем из макета */
+  margin: 0 auto; /* центриуем */
+}
+.page-header__navigation {
+  /* флекс-ребенок будет растягиваться во всю ширину родителя
+  в 940 как нам и надо, */
+  display: flex; /* навигация в свою очередь является флекс-контейнером для логотипа и списка: 2 элемента */
+  justify-content: space-between; /* чтобы список с кнопками и логотип прижались к противоположным краям контейнера page-header__wrapper */
+  align-items: center; /* чтобы выровнялись по вертикали по центру */
+}
+.page-header__home-button {
+  /* все из макета, размер логотипа будут просто определяться размера шрифта */
+  font-family: "Lora", sans-serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+.page-header__navigation-bar {
+  display: flex; /* флекс-контейнер конкретно для списка кнопок */
+  flex-wrap: wrap; /* если вдруг заказчик захочет добавить кнопки на сайт и они не вместятся, они будут переноситься второй строкой */
+  max-width: 550px; /* просто ограничили максимальную ширину области  до какой области кнопки не будут переноситься,
+  после того как общая длина кнопок превысит 550, то сработает wrap */
+}
+.page-header__link {
+  /* сама кнопка в виде ссылки, так как она просто будет сылкой на другие страницы */
+  padding: 27px; /* расширяет область нажатия на ссылку-кнопку, и задаёт
+  высоту ссылке a, которая в свою очередь задаёт высоту элементу li, а он уже задаст высоту списку ul в навигации,
+  поэтому мы не определили высоту блока в классе page-header__navigation, но можем и определить,
+  главное чтобы паддинг ее не превысил. Левый и правый паддинг будет задавать расстояние между кнопками */
+  text-transform: uppercase;
+  font-family: "Oxy", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+}
+
+.page-header__body {
+  display: flex; /* хоть и в контейнере всего один блок,
+  это обёртка page-header__body-wrapper, все равно определяем его
+  как флекс-контейнер, будет очень легко потом его
+  отцентрировать по вертикали и обязательно меняем направление с горизонтального на вертикальное */
+  flex-direction: column;
+  justify-content: center; /* так как направление теперь вертикальное то центриуем блок page-header__body-wrapper
+  который в нём, по вертикальной оси */
+  height: 426px;
+}
+.page-header__body-wrapper {
+  /* эта обретка в свою очередь тоже флекс контейнер для слогана, текса и кнопки внутри */
+  display: flex;
+  flex-direction: column; /* тоже задаём вертикальное направлени сверху вниз */
+  align-items: center; /* просто центрируем все элементы по горизонтали */
+  justify-content: space-between; /* распределяем дочерние элементы (их три, слоган, текст и кнопка)
+  по вертикальной оси внутри обертки равномерно */
+  height: 159px;
+}
+.page-header__slogan {
+  font-family: "Lora", sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 51px; /* обращай внимание на этот параметр, когда у тебя текст в блоке заданной высотой,
+  именно он будет задавать высоту текста, (следовательно может быть больше высоты блока и тогда все поедет)
+   а не размер шрифта, так как в макетах он бывает то меньше то больше размера шрифта */
+  margin: 0; /* не добавил в ресет поэтому тут */
+}
+.page-header__text {
+  color: rgba(255, 255, 255, 0.63);
+  font-family: "Oxy", sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.button { /* здесь будут общие стили для двух кнопок */
+  border: none; /* убираем все стандартные браузерные обводки */
+  border-radius: 3px;
+  background-color: #dd783f;
+  color: white;
+  font-family: "Oxy", sans-serif;
+}
+.page-header__button { /* стили для первой кнопки */
+  width: 167px;
+  height: 44px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.nav {
+  /* задаём внешний вид */
+  width: 960px;
+  padding: 9px 0 10px;
+  height: 65px; /* высоту можно и не опередять, так как её как я писал определят высоты кнопок-ссылок,
+  самые низшие элементы, это если вдруг кнопок вдруг станет больше по требуования заказчика,
+  то мы легко их добавим не изменяя высоту  */
+}
+.page-main__nav {
+  /* задаём позиционирование */
+  margin: 0 auto;
+}
+.nav__list {
+  display: flex; /* определяем список флекс-контейнером для кнопок как делали в первой навигации page-header__navigation-bar */
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.nav__item {
+  /* в данном случае я определил именно размеры элемента li, а не ссылки nav__link, как это было в первой навигации.
+  Так как в макете кнопки в этой навигации равномерно распределены по всей ширине, то максимальные ширины
+  кнопок определил сам дизайнер и задал их 139px, поэтому мы просто определим размеры элементов li,
+  самой ссылке мы только добавим паддинги из макета, чтобы область нажатия была больше чем текст,
+  можно не беспокоиться что они превысят размеры элемента li, дизайнер это должен продумать */
+  height: 46px;
+  width: 139px;
+  display: flex; /* определяем элемент li как флекс-контейнер для ссылки nav__link, делаем это лишь
+  для выравнивания самой ссылки внутри элемента li, так как размеры ссылки мы в данном случае не задавали,
+  поэтому внутри ссылка встает в начале блока li, слева вверху,
+  паддинги которые мы указали ссылке тоже размеры ей незадают
+  так по макету они немного меньше, и чтобы не подгонять их вручную мы просто с помощью justify-content: center;
+  align-items: center; выровняем её по центру, обязательно указываем направление сверху вниз */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nav__link {
+  padding: 13px 25px 13px 24px;
+  color: #768088;
+  font-family: "Lora", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.posts {
+  /* этот блок тоже можно определить как флекс-контейнер,
+  с напрвлением сверху вниз, а можно и не опрелелять, по сути принципиальной разницы тут нет,
+  так как задачи по выравнияванию блоков не стоит, они оба занимают всю ширину и идут сверху вниз вплотную */
+  height: 1225px;
+  background-color: #f7f7f7;
+}
+.posts__featured {
+  display: flex; /* определяем как флекс-контейнер с направлением свеху вниз */
+  flex-direction: column;
+
+  align-items: center; /* и по горизонтали */
+  /*   высоту тут не указываем для того если карточек станет
+  больше чем две, высота будет подстраиваться под ве карточки в строке */
+  width: 940px;
+  margin: 0 auto;
+  padding: 60px 0 7px;
+}
+.posts__title-of-section {
+  margin-bottom: 23px;
+}
+.title-of-section {
+  height: 44px;
+  width: 188px;
+  border-bottom: 1px solid #dedede; /* полоска под надписью */
+}
+
+.title-of-section p {
+  text-align: center;
+  color: #2e2e2e;
+  font-family: "Oxy", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 2px;
+}
+
+.posts__cards {
+  /* флекс-контейнер для двух карточек */
+  gap: 20px; /* пространство между карточками */
+  display: flex;
+  flex-wrap: wrap; /* разрешаем перенос, если карточек будет отображаться больше чем две */
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse; /* в самой карточке три элемента которые идут сверху вниз
+  для удобства можно сделать направление также по вертикали, но снизу вверх, так как в макете они прибиты к нижней части,
+  затем с помощью свойства order каждому из трех элементов дадим порядок следования такой как в макете,
+  при этом отсчет идет снизу так как свойство column-reverse
+
+  */
+  padding: 15px 20px;
+  height: 280px; /* у карточек фиксированные размеры, сразу указываем из макета */
+  width: 460px;
+  background-repeat: no-repeat;
+  background-size: auto; /* размер авто так как контейнер карточки такой же как размер фоновой картинки,
+  прописываем один раз у общего класса card*/
+  font-family: "Oxy", sans-serif;
+  font-weight: 400;
+}
+
+/* Модификаторы, так как у карточки есть декортивное изображение - фоновое, а карточки все однотипные,
+то добавляем модификатор через --, то есть дополнительный класс, который будет
+содержать только фоновое изображение конкретной карточки, с помощью JS мы потом просто будем убирать или
+добавлять класс с фоном */
+
+.card--the_road_ahead {
+  background-image: url(../images/card-back1.jpg);
+}
+.card--from_top_down {
+  background-image: url(../images/card-back2.jpg);
+}
+
+.card__blockquote {
+  /* в этой секции три элемента: аватар, автор, дата публикации */
+  height: 35px;
+  display: flex;
+  align-items: center;
+  order: 1; /* первый снизу элемент */
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.card__title {
+  order: 3; /* третий по счету снизу */
+  margin-bottom: 6px; /* внешние отступы у флекс-элементов тоже хорошо работают,
+  позиционировать ими тоже можно, если нужны точные расстояния */
+  color: white;
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 30px;
+}
+.card__text {
+  order: 2; /* второй по счету снизу*/
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 25px;
+}
+.avatar {
+  height: 26px; /* определяем размеры аватара из макета */
+  width: 26px;
+  margin-right: 10px; /* толкаем соседний элемент с классом recent-card__author(автор) вправо */
+  border-radius: 60px; /* скругляем контейнер */
+  overflow: hidden; /* так как картинка внутри этого контейнера - квадратная, обрезаем то что вышло за пределеы контейнера */
+  /* outline: 2px solid greenyellow;
+  outline-offset: -2px; */
+}
+
+.blockquote__data {
+  margin-left: auto; /* сдвигаем крайний правый элемент с датой публикации до конца контейнера вправо */
+}
+.posts__recent {
+  /* такой же блок как и предыдущий, с названием и контейнером для карточек */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 752px;
+  width: 940px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.posts__recent-cards {
+  /* контейнер для ранних карточек */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  height: 607px;
+}
+
+.recent-card {
+  /* отличие этой карточки в том что изображение не фоновое, а контентное в виде <img>
+  в карточке опять три элемента, только теперь это
+  1) картинка
+  2) контейнер с текстом, внутри которого слоган и описание, в прошлый раз
+  слоган и описание не помещали в отельный контенейр, так как не было необходимости
+  3) блок с информацией о публикацией, тут без изменений
+  */
+  display: flex;
+  flex-direction: column;
+  width: 296px;
+  height: 293px;
+  color: #101315;
+  background-color: #f7f7f7; /* цвет фона задавать не обязательно так как
+  он совпадает с фоном контейнера page-main__posts posts, если фон контейнера изменится,
+  то у нас в карточке останется полоска цвета который мы тут задали, поэтому в идеале его лучше убрать */
+}
+
+.recent-card__slogan {
+  background-color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 13px;
+  height: 93px;
+  width: 296px;
+}
+.recent-card__slogan h2 {
+  margin-bottom: 6px;
+  color: #101315;
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+}
+.recent-card__slogan p {
+  color: #7a7a7a;
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+}
+.recent-card__blockquote {
+  display: flex;
+  align-items: center;
+  padding: 12px 13px 10px;
+  height: 48px;
+  margin-top: auto; /* это свойство отодвигает максимально вниз блок с инфой о
+  публикации и получается видна полоска фона серого цвета родиельского контейнера recent-card между этим и
+  предыдущим блоком recent-card__slogan, главное чтобы суммарный размер высот всех трех элементов был
+  меньше чем высота самого контейнера recent-card, по макету должно получиться, но мне пришлось подгонять
+  вручную высоту, хз где накосячил */
+  background-color: #fcfcfc;
+}
+.recent-card__data {
+  margin-left: auto;
+  color: #999999;
+  font-family: "Oxy", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 35px;
+}
+.recent-card__author {
+  color: #999999;
+  font-family: "Oxy", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 35px;
+}
+
+.card__button { /* стили для второй кнопки */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 87px;
+  height: 26px;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 13px;
+}
+
+.footer {
+  padding: 17px 20px;
+  background-image: url("../images/backgraund_footer.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer_logo {
+  color: #FFFFFF;
+}
+
+.footer_nav {
+  color: rgba(255, 255, 255, 0.6);
+}
